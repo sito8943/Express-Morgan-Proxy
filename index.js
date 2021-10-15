@@ -8,7 +8,7 @@ const app = express();
 // Configuration
 const PORT = 3000;
 const HOST = "localhost";
-const API_SERVICE_URL = "https://jsonplaceholder.typicode.com";
+const API_SERVICE_URL = "https://my_api.com";
 
 // Logging
 app.use(morgan('dev'));
@@ -28,11 +28,11 @@ app.use('', (req, res, next) => {
  });
 
  // Proxy endpoints
-app.use('/json_placeholder', createProxyMiddleware({
+app.use('/my_api', createProxyMiddleware({
     target: API_SERVICE_URL,
     changeOrigin: true,
     pathRewrite: {
-        [`^/json_placeholder`]: '',
+        [`^/my_api`]: '',
     },
  }));
 
